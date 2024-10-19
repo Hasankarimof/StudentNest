@@ -1,76 +1,269 @@
-/* Home.css */
-.home {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5; /* Light background */
+/* CSS Variables for Consistent Styling */
+:root {
+    --primary-color: #ffc107; /* Main color */
+    --primary-dark: #e0a800; /* Darker shade for hover effects */
+    --text-color: #333; /* Default text color */
+    --background-color: #ffffff; /* Background color */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Shadow color */
+    --header-height: 80px; /* Fixed header height for layout */
+    --transition-speed: 0.3s; /* Transition speed for hover effects */
+}
+
+/* General Body Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6; /* Improved readability */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Homepage Layout */
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header Styles */
+.header {
+    position: sticky; /* Sticky header */
+    top: 0;
+    z-index: 1000; /* Ensure header is above other content */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 20px;
-  }
-  
-  .header {
-    background-color: #343a40; /* Dark background */
-    color: white;
-    padding: 10px 0;
-  }
-  
-  .header nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-  }
-  
-  .hero {
-    background-color: #6c757d; /* Grey background */
-    color: white;
-    padding: 50px 20px;
-  }
-  
-  .cta-buttons {
-    margin: 20px 0;
-  }
-  
-  .btn {
-    padding: 10px 20px;
-    color: white;
-    text-decoration: none;
+    background-color: var(--background-color); /* Clean background */
+    box-shadow: 0 2px 4px var(--shadow-color); /* Subtle shadow for depth */
+    transition: background-color var(--transition-speed), box-shadow var(--transition-speed); /* Smooth transitions */
+}
+
+/* Change header style on scroll */
+.header.scrolled {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+    box-shadow: 0 2px 10px var(--shadow-color); /* Enhanced shadow */
+}
+
+/* Logo Styles */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color); /* Dark color for better contrast */
+}
+
+/* Navigation Styles */
+.nav {
+    display: flex;
+    gap: 15px;
+    position: relative; /* Needed for dropdown */
+}
+
+.nav li {
+    cursor: pointer;
+    position: relative; /* Needed for dropdown */
+    transition: color var(--transition-speed), transform var(--transition-speed); /* Smooth color and transform transition */
+}
+
+.nav li:hover {
+    color: var(--primary-color); /* Highlight color on hover */
+}
+
+/* Dropdown Menu Styles */
+.nav ul {
+    display: none; /* Initially hide dropdown */
+    position: absolute;
+    background: white;
+    box-shadow: 0 4px 8px var(--shadow-color);
     border-radius: 5px;
-    margin: 10px;
-  }
-  
-  .btn.primary {
-    background-color: #007bff; /* Bootstrap primary color */
-  }
-  
-  .btn.secondary {
-    background-color: #28a745; /* Bootstrap success color */
-  }
-  
-  .features, .testimonials {
-    margin: 20px 0;
-    padding: 20px;
-    background-color: #ffffff; /* White background */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .feature {
-    margin: 20px 0;
-  }
-  
-  .testimonial {
-    margin: 10px 0;
+    padding: 10px 0;
+    z-index: 10; /* Ensure dropdown is above other elements */
+    transition: opacity var(--transition-speed), transform var(--transition-speed); /* Smooth transitions */
+    opacity: 0;
+    transform: translateY(10px); /* Dropdown starts off-screen */
+}
+
+.nav li:hover > ul {
+    display: block; /* Show dropdown on hover */
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Slide in */
+}
+
+/* Dropdown Item Styles */
+.dropdown-item {
+    padding: 10px 20px; /* Padding for dropdown items */
+    transition: background-color var(--transition-speed); /* Smooth background transition */
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1; /* Change color on hover */
+}
+
+/* Signup Button Styles */
+.signup-btn {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color var(--transition-speed), transform var(--transition-speed); /* Smooth transition */
+}
+
+.signup-btn:hover {
+    background-color: var(--primary-dark); /* Darker shade on hover */
+}
+
+/* Hero Section Styles */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+    background: url('../src/assets/image.jpg') no-repeat center center/cover; /* Ensure correct image path */
+    width: 100%;
+    height: 80vh; /* Full height */
+    color: white;
+    position: relative;
+}
+
+/* Overlay for better text contrast */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Overlay for better text contrast */
+    z-index: 1;
+}
+
+/* Hero Text Styles */
+.hero-text {
+    max-width: 600px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    font-size: 2em; /* Increased font size for emphasis */
+    font-weight: bold; /* Bold text for importance */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+}
+
+/* Location Text Styles */
+.location {
     font-style: italic;
-  }
-  
-  .footer {
-    margin-top: 40px;
+    margin-top: 10px; /* Spacing for visual clarity */
+}
+
+/* Search Bar Styles */
+.search-bar {
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.9); /* Light background for search bar */
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Input Styles */
+.search-input,
+.date-input,
+.guest-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px; /* Fixed width for consistency */
+    transition: border-color var(--transition-speed); /* Smooth border color change */
+}
+
+.search-input:focus,
+.date-input:focus,
+.guest-input:focus {
+    border-color: var(--primary-color); /* Change border color on focus */
+}
+
+/* Search Button Styles */
+.search-btn {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color var(--transition-speed), transform var(--transition-speed); /* Added transition */
+}
+
+.search-btn:hover {
+    background-color: var(--primary-dark); /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly grow effect */
+}
+
+/* Additional Sections Styling */
+.section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-in-out;
+    padding: 40px 20px;
+    margin: 20px 0;
+    background-color: #fff; /* White background for sections */
+    text-align: center;
+    width: 80%;
+    max-width: 1200px; /* Ensure responsiveness on larger screens */
+    box-shadow: 0 4px 8px var(--shadow-color); /* Shadow for sections */
+    border-radius: 10px;
+}
+
+.section.visible {
+    opacity: 1; /* Show section */
+    transform: translateY(0); /* Slide in */
+}
+
+/* Footer Styling */
+.footer {
+    width: 100%;
     padding: 20px;
-    background-color: #343a40; /* Dark background */
-    color: white;
-  }
-  
-  .footer nav a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-  }
-  
+    background-color: #f8f8f8; /* Light gray background */
+    text-align: center;
+    margin-top: 40px; /* Spacing above */
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px; /* Smaller font size for footer text */
+    color: #777; /* Light gray for footer text */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header, .hero, .section {
+        padding: 15px; /* Reduced padding for smaller screens */
+    }
+
+    .search-bar {
+        flex-direction: column; /* Stack search inputs on smaller screens */
+        width: 100%; /* Full width */
+    }
+
+    .search-input,
+    .date-input,
+    .guest-input {
+        width: auto; /* Auto width for inputs */
+    }
+}
+
+/* Advanced Effects */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section {
+    animation: fadeIn 0.5s ease-in-out forwards; /* Fade-in effect for sections */
+}

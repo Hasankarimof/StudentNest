@@ -1,3 +1,4 @@
+// App.js
 import React, { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
@@ -5,7 +6,7 @@ import Footer from './components/Footer';
 import NotificationContainer from './components/NotificationContainer';
 import { NotificationProvider } from './context/NotificationContext';
 import { isAuthenticated } from './auth/Auth';
-import LoadingSpinner from './components/LoadingSpinner'; // Create a loading spinner component
+import LoadingSpinner from './components/LoadingSpinner';
 
 // Lazy loading for better performance
 const Home = lazy(() => import('./pages/Home'));
@@ -17,6 +18,7 @@ const Favorites = lazy(() => import('./pages/Favorites'));
 const Chat = lazy(() => import('./chat/Chat'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+const SignUp = lazy(() => import('./pages/SignUp'));
 
 const ProtectedRoute = ({ children }) => {
   return isAuthenticated() ? children : <Navigate to="/login" />;
@@ -26,9 +28,9 @@ function App() {
   return (
     <NotificationProvider>
       <div>
-        <Header />
-        <NotificationContainer /> {/* Notification container for alerts */}
-        <Suspense fallback={<LoadingSpinner />}> {/* Loading spinner while loading components */}
+        <Header />  {/* Header should only be here */}
+        <NotificationContainer />
+        <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/listings" element={<Listings />} />
@@ -37,7 +39,7 @@ function App() {
                 <Profile />
               </ProtectedRoute>
             } />
-            <Route path="/register" element={<Registration />} />
+            <Route path="/registration" element={<Registration />} />
             <Route path="/login" element={<Login />} />
             <Route path="/favorites" element={
               <ProtectedRoute>
@@ -59,6 +61,7 @@ function App() {
                 <AdminDashboard />
               </ProtectedRoute>
             } />
+            <Route path="/signup" element={<SignUp />} />
           </Routes>
         </Suspense>
         <Footer />

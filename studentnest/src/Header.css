@@ -1,0 +1,88 @@
+/* CSS Variables for Consistent Styling */
+:root {
+    --primary-color: #ffc107; /* Warning color */
+    --primary-dark: #e0a800; /* Darker shade for hover effects */
+    --text-color: #333; /* Default text color */
+    --active-color: red; /* Active link color */
+    --background-color: #ffffff; /* Background color for the navbar */
+    --shadow: rgba(0, 0, 0, 0.1); /* Shadow color */
+}
+
+/* General Styling for the Header */
+.top-navbar, .bottom-navbar {
+    border-bottom: 1px solid #e6e6e6;
+    background-color: var(--background-color);
+    box-shadow: 0 2px 4px var(--shadow);
+    transition: background-color 0.3s;
+}
+
+.brand-image {
+    width: 100px;
+}
+
+/* Dropdown Menu Styles */
+.nav-dropdown {
+    position: absolute;
+    display: none;
+    background: white;
+    box-shadow: 0 4px 8px var(--shadow);
+    border-radius: 5px;
+    z-index: 10;
+}
+
+/* Show dropdown on hover */
+.nav-links .nav-link:hover + .nav-dropdown {
+    display: block; /* Show dropdown */
+}
+
+/* Social Icons */
+.social-link {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.social-link:hover {
+    color: var(--primary-color);
+}
+
+/* Navigation Links Styling */
+.nav-links .nav-link {
+    font-size: 0.95rem;
+    padding: 10px 15px;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: color 0.3s, transform 0.2s;
+}
+
+.nav-link.active-nav {
+    font-weight: bold;
+    color: var(--active-color);
+}
+
+.nav-links .nav-link:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links .nav-link {
+        font-size: 0.85rem;
+    }
+}
+
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    background: white; /* Set a solid background color for the dropdown */
+    border-radius: 5px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 8px var(--shadow); /* Add shadow for depth */
+    z-index: 9999; /* Ensure it appears above other elements */
+}
+
+/* Adjust the navbar to ensure dropdown appears above background */
+.bottom-navbar {
+    position: relative; /* Ensure it's positioned correctly */
+    z-index: 1000; /* Bring the navbar above other elements */
+}
